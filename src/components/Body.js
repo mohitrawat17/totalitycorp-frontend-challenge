@@ -65,7 +65,7 @@ const Body = () => {
 
   return (
     <>
-      <div className="max-sm:flex-col flex flex-row justify-between my-5 mx-8">
+      <div className="flex flex-col sm:flex-row justify-between my-5 mx-8">
         {/* drop down */}
         <select
           value={selectedOption}
@@ -80,10 +80,10 @@ const Body = () => {
         </select>
 
         {/* search */}
-        <div className="max-sm:mx-auto border-b-2 bg-white">
+        <div className="relative mx-auto bg-white">
           <input
             onKeyDown={handleKeyPress}
-            className="rounded-md pl-2 outline-none font-normal py-1 pr-3"
+            className="rounded-md pl-2 outline-none font-normal py-1 pr-10"
             type="text"
             placeholder="Search Items"
             value={stateVar}
@@ -92,7 +92,7 @@ const Body = () => {
             }}
           />
           <SearchIcon
-            className=" cursor-pointer hover:text-orange-500"
+            className=" cursor-pointer hover:text-[#f34949]"
             style={{ fontSize: "33px" }}
             onClick={() => {
               const data = filterProd(stateVar, products);

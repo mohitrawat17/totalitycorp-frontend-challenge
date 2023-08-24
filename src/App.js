@@ -10,12 +10,16 @@ import Error from "./components/ErrorElement";
 import Registration from "./components/Registration";
 import Body from "./components/Body";
 import Login from "./components/Login";
-
+import { Provider } from "react-redux";
+import store from './utils/store'
 const App = () => {
   return (
-    <div className=" bg-slate-100 overflow-x-hidden">
+    <Provider store={store}>  
+      <div className=" bg-slate-100 overflow-x-hidden">
       <Outlet />
     </div>
+    </Provider>
+
   );
 };
 
