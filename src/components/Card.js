@@ -2,16 +2,38 @@ import React from 'react'
 import StarIcon from '@mui/icons-material/Star'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../utils/cartSlice';
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Card = ({product}) => {
-console.log(product);
+
+ 
+
+
+const notify = () =>  toast.success('Added to cart', {
+  position: "top-right",
+  autoClose: 1500,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+  });
+
+
+
+
+
  const dispatch=useDispatch();
   const handleAddCart=()=>{
       dispatch(addItem(product));
+      notify();
   }
 
 
   return (
+    <>
     <div className='m-5 p-2 rounded-xl shadow-md bg-white cursor-pointer hover:scale-95 transition-transform duration-200 '>
      <div className='flex justify-center'>
      <img className=' w-40 h-44 ' src={product?.image} alt='image'></img>
@@ -26,7 +48,10 @@ console.log(product);
      <h3 className='mt-2 text-gray-700 bg-slate-200 font-medium w-24 pl-1 py-1 rounded-2xl text-sm'>Free Delivery</h3>
      </div>
     <button onClick={handleAddCart} className='whitespace-nowrap mt-2 bg-green-600 text-white pl-2 px-2 py-[1px] rounded-sm'>Add +</button>
+   
     </div>
+    
+    </>
   )
 }
 

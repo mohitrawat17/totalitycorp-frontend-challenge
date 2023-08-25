@@ -2,18 +2,34 @@ import React, { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import { useDispatch, useSelector } from "react-redux";
 import { removeSpecificItem } from "../utils/cartSlice";
+import 'react-toastify/dist/ReactToastify.css';
+import {toast } from 'react-toastify';
+
 
 const CartItem = ({ id, image, title, price, rating }) => {
+  const notify = () =>  toast.warning('Removed from cart', {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    });
+
+
   const dispatch = useDispatch();
   const handleRemoveCart = () => {
     dispatch(removeSpecificItem(id));
+    notify();
   };
 
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex w-full">
-      {cartItems.length != 0 ? (
+     
         <div className="w-full flex mb-1 mr-5 p-2 shadow-md bg-white cursor-pointer ">
           <div className=" flex justify-center mr-3">
             <img className=" w-32 h-32 " src={image} alt="image"></img>
@@ -49,12 +65,6 @@ const CartItem = ({ id, image, title, price, rating }) => {
             </button>
           </div>
         </div>
-      ) : (
-        <div>
-          <div>Oops! your bag is empty</div>
-          <button>Add items to bag</button>
-        </div>
-      )}
     </div>
   );
 };

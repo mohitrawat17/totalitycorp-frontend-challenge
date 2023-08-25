@@ -15,7 +15,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="m-5 flex justify-between items-center">
+    <div className="m-5 flex max-md:flex-col justify-between items-center">
       
         <div className="flex flex-col">
           {cartData.map((item) => {
@@ -55,11 +55,16 @@ const Cart = () => {
               </h3>
             </div>
             <hr></hr>
+
+            <Link to='/home/checkout'> 
             <div className="flex justify-center">
-              <button className="bg-green-600 my-5 text-gray-100 py-1 px-2 rounded-lg cursor-pointer  hover:scale-95 transition-transform duration-200 text-center tracking-wide text-lg  font-semibold">
-                Proceed To pay
+             <button className="bg-green-600 my-5 text-gray-100 py-1 px-2 rounded-lg cursor-pointer  hover:scale-95 transition-transform duration-200 text-center tracking-wide text-lg  font-semibold">
+                Check out
               </button>
             </div>
+            </Link>
+
+
             <div className="border p-3">
               <h2 className="font-semibold">
                 Review your order and adress details to avoid cancellations

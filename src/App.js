@@ -10,6 +10,7 @@ import Error from "./components/ErrorElement";
 import Registration from "./components/Registration";
 import Body from "./components/Body";
 import Login from "./components/Login";
+import Checkout from "./components/Checkout";
 import { Provider } from "react-redux";
 import store from './utils/store'
 const App = () => {
@@ -59,7 +60,11 @@ const appRouter = createBrowserRouter([
           },
           {
             path: "cart",
-            element: <Cart />,
+            element: <Cart />
+          },
+          {
+            path: "checkout",
+            element: <Checkout />,
           },
         ],
       },
