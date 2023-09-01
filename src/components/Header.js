@@ -25,7 +25,7 @@ const Header = () => {
       {/* title */}
       <Link to="/home" className="w-full">
         <div className="ml-10 max-md:ml-6 flex justify-start items-center">
-          <img className="w-6 h-6 max-md:w-5 max-md:h-5" src={logo}></img>
+          <img data-testid="logo" className="w-6 h-6 max-md:w-5 max-md:h-5" src={logo}></img>
           <h1 className="pl-2 max-md:pl-1 max-md:text-xl text-[#f34949] py-4 font-bold text-2xl  sm:font-semibold sm:py-3">
             Shoppy
           </h1>
@@ -90,7 +90,7 @@ const Header = () => {
         <Link to="/home/cart">
           <div className="flex items-center p-2 max-md:py-2 px-1 cursor-pointer transition duration-300 ease-in-out  hover:bg-[#f34949]  hover:text-white max-md:p1 max-md:text-sm whitespace-nowrap">
             <ShoppingCartIcon />
-            <div className="text-xs sm:text-base ml-1">
+            <div data-testid="cart-items" className="text-xs sm:text-base ml-1">
               Cart {cartItems.length}
             </div>
           </div>
