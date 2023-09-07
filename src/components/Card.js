@@ -33,7 +33,7 @@ const notify = () =>  toast.success('Added to cart', {
 
 
   return (
-    <>
+    <div>
     <div className='m-5 p-2 rounded-xl shadow-md bg-white cursor-pointer hover:scale-95 transition-transform duration-200 '>
      <div className='flex justify-center'>
      <img className=' w-40 h-44 ' src={product?.image} alt='image'></img>
@@ -51,7 +51,7 @@ const notify = () =>  toast.success('Added to cart', {
    
     </div>
     
-    </>
+    </div>
   )
 }
 

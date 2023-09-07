@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 const filterProd = (stateVar, products) => {
-  return products.filter(
-    (item) =>
-      item?.title?.toLowerCase()?.includes(stateVar.toLowerCase())
+  return products.filter((item) =>
+    item?.title?.toLowerCase()?.includes(stateVar.toLowerCase())
   );
 };
 
 const filterCategory = (val, products) => {
-  return val === 'all' ? products : products.filter(
-    (item) =>
-      item?.category?.toLowerCase() === val.toLowerCase()
-  );
+  return val === "all"
+    ? products
+    : products.filter(
+        (item) => item?.category?.toLowerCase() === val.toLowerCase()
+      );
 };
 
 const Body = () => {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
   const [stateVar, setStateVar] = useState("");
 
   useEffect(() => {
@@ -34,18 +34,18 @@ const Body = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       const data = filterProd(stateVar, products);
       setFilterProducts(data);
     }
   };
 
   const options = [
-    { value: 'all', label: 'All Category' },
+    { value: "all", label: "All Category" },
     { value: `Men's Clothing`, label: `Men's Clothing` },
     { value: `Women's Clothing`, label: `Women's Clothing` },
-    { value: 'Jewelery', label: 'Jewelery' },
-    { value: 'Electronics', label: 'Electronics' },
+    { value: "Jewelery", label: "Jewelery" },
+    { value: "Electronics", label: "Electronics" },
   ];
 
   const handleOptionChange = (e) => {
@@ -73,7 +73,7 @@ const Body = () => {
           className="py-1 rounded-md outline-none cursor-pointer mb-3 sm:mb-0"
         >
           {options.map((option) => (
-            <option  key={option.value} value={option.value}>
+            <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
@@ -92,6 +92,7 @@ const Body = () => {
             }}
           />
           <SearchIcon
+            data-testid="search-btn"
             className=" cursor-pointer hover:text-[#f34949]"
             style={{ fontSize: "33px" }}
             onClick={() => {
@@ -102,11 +103,18 @@ const Body = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-        {filterProducts.map((item) => {
-          return <Card product={item} key={item.id} />;
-        })}
-      </div>
+      {products.length==20 ? (
+        <div
+          data-testid="prod-list"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4"
+        >
+          {filterProducts.map((item) => {
+            return <Card product={item} key={item.id} />;
+          })}
+        </div>
+      ) : (
+       <div className="font-bold text-4xl w-full h-full text-center">Loading...</div>
+      )}
     </>
   );
 };
