@@ -47,7 +47,7 @@ const notify = () =>  toast.success('Added to cart', {
      }
      <h3 className='mt-2 text-gray-700 bg-slate-200 font-medium w-24 pl-1 py-1 rounded-2xl text-sm'>Free Delivery</h3>
      </div>
-    <button onClick={handleAddCart} className='whitespace-nowrap mt-2 bg-green-600 text-white pl-2 px-2 py-[1px] rounded-sm'>Add +</button>
+    <button data-testid="add-btn" onClick={handleAddCart} className='whitespace-nowrap mt-2 bg-green-600 text-white pl-2 px-2 py-[1px] rounded-sm'>Add +</button>
    
     </div>
     

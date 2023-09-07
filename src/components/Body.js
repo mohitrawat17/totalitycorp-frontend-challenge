@@ -82,6 +82,7 @@ const Body = () => {
         {/* search */}
         <div className="relative mx-auto bg-white">
           <input
+          data-testid="search-input"
             onKeyDown={handleKeyPress}
             className="rounded-md pl-2 outline-none font-normal py-1 pr-10"
             type="text"
